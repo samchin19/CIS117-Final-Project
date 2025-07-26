@@ -2,6 +2,14 @@
 # Team: SF Pythons
 
 import tkinter
+from burgers import BURGER_CLASSES
+from customer import Student, RegularCustomer
+
+def display_menu():
+
+def get_customer_type():
+
+def main(): 
 
 
 def displayOrderGUI(self):
