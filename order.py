@@ -15,6 +15,7 @@ class Order:
         self.items.append((burger, quantity))
         
     def calc_total(self, customer):
+        subtotal = sum(burger.get_price() * quantity for burger, quantity in self.items)
         tax = customer.calculate_tax(subtotal)
         total = subtotal + tax
         return subtotal, tax, total
@@ -33,4 +34,13 @@ class Order:
 
     def save_bill_to_file(self, subtotal, tax, total):
         with open("bill.txt", "w") as file: 
+            file.write("Your Bill:\n")
+            file.write("*" * 50 + "\n")
             
+            for burger, quantity in self.items:
+                file.write(f"{burger.name} x {quantity} - ${burger.get.price() * quantity:.2f}\n")
+            file.write("*" * 50 + "\n")
+            
+            file.write(f"Total before tax: ${subtotal:.2f}\n")
+            file.write(f"Tax Amount: ${tax:.2f}\n")
+            file.write(f"Total price after tax: ${total:.2f}\n")
