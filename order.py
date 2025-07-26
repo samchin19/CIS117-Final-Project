@@ -31,4 +31,6 @@ class Order:
         print(f"Tax Amount: ${tax:.2f}")
         print(f"Total price afteer tax: ${total:.2f}\n")
 
-    def save_bill_to_file(
+    def save_bill_to_file(self, subtotal, tax, total):
+        with open("bill.txt", "w") as file: 
+            
