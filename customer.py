@@ -8,7 +8,7 @@ student tax is set to 0.
 TAX_RATE = 0.09
 
 class Customer:
-    def__init__(self):
+    def __init__(self):
         pass
     def calculate_tax(self, subtotal):
         return subtotal * TAX_RATE
