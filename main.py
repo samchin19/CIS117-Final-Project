@@ -24,6 +24,13 @@ def get_customer_type():
 def main(): 
     display_menu()
 
+    #Creating an order object 
+    customerOrder = Order()
+
+    #Generating and Printing the Bill 
+
+    #Saving the bill in a file 
+
 def displayOrderGUI(self):
     print("Displaying the order in a Graphics Window")
 
