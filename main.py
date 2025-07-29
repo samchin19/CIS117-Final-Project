@@ -26,10 +26,12 @@ def main():
 
     #Creating an order object 
     customerOrder = Order()
-
-    #Generating and Printing the Bill 
+    customerOrder.add_item(burger = input("Please enter what burger you would like: "), quantity = input("Please enter quanity: "))
+    subtotal, tax, total = customerOrder.calc_total()
+    customerOrder.print_bill(subtotal, tax, total)
 
     #Saving the bill in a file 
+    customerOrder.save_bill_to_file(subtotal, tax, total)
 
 def displayOrderGUI(self):
     print("Displaying the order in a Graphics Window")
