@@ -2,7 +2,7 @@
 # Team: SF Pythons
 
 from burgers import BURGER_CLASSES
-from customer import Student, RegularCustomer
+from Customer import Student, RegularCustomer
 
 class Order:
     def __init__(self):

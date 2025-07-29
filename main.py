@@ -4,7 +4,7 @@
 import tkinter
 from order import Order
 from burgers import BURGER_CLASSES
-from customer import Student, RegularCustomer
+from Customer import Student, RegularCustomer
 
 def display_menu():
 
