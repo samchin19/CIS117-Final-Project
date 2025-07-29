@@ -1,6 +1,5 @@
 # CIS117 - Final Part 1 - Maksym Stesev, Micole Chen, Samantha Chin
 # Team: SF Pythons
-
 class Burger:
     '''
     This class represents a generic burger with a name and a price.

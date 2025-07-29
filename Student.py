@@ -2,7 +2,9 @@
 # Team: SF Pythons
 from Customer import Customer
 
-
 class Student(Customer):
-    def calculate_tax(self, subtotal):
-        return 0.0
+    '''
+    Calculates the tax amount for a Student.
+    '''
+    def calculate_tax(self):
+        return 0.0 # set to zero by the requirements

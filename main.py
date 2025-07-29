@@ -3,13 +3,26 @@
 
 import tkinter
 
-
 def display_menu():
+    '''
+    Displays the menu options for the Food Court
+    '''
+    print("*" * 10)
+    print("Welcome to the College Food Court!")
+    print("Please choose from the following:")
+    print("1. De Anza Burger - $5.25")
+    print("2. Bacon Cheese - $5.75")
+    print("3. Mushroom Swiss - $5.95")
+    print("4. Western Burger - $5.95")
+    print("5. Don Cali Burger - $5.95")
+    print("6. Exit")
+    print("*" * 10)
 
 def get_customer_type():
+    pass
 
 def main(): 
-
+    display_menu()
 
 def displayOrderGUI(self):
     print("Displaying the order in a Graphics Window")
@@ -31,3 +44,6 @@ def displayOrderGUI(self):
     close_button.grid(row=len(self._orderDict) +2, column=0, columnspan=2, pady=10) # TODO: Change "_orderDict" to an actual variable
 
     self.root.mainloop()
+
+if __name__ == '__main__':
+    main()
