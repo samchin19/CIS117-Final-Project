@@ -2,9 +2,7 @@
 # Team: SF Pythons
 
 import tkinter
-from order import Order
-from burgers import BURGER_CLASSES
-from Customer import Student, RegularCustomer
+
 
 def display_menu():
 
