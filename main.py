@@ -1,6 +1,16 @@
 # CIS117 - Final Part 1 - Maksym Stesev, Micole Chen, Samantha Chin
 # Team: SF Pythons
 
+from Order import Order
+from Customer import Customer
+from Staff import Staff
+from Student import Student
+from Burgers import Burger
+from BaconCheeseBurger import BaconCheese
+from DeAnzaBurger import DeAnzaBurger
+from DonCaliBurger import DonCaliBurger
+from MushroomSwissBurger import MushroomSwiss
+from WesternBurger import WesternBurger
 import tkinter
 
 def display_menu():
@@ -19,15 +29,27 @@ def display_menu():
     print("*" * 10)
 
 def get_customer_type():
-    pass
+    while True:
+        isStudentString = input("Are you a student? (y/n): ").strip().lower()
+        if isStudentString == 'y':
+            return Student()
+        elif isStudentString == 'n':
+            return RegularCustomer()
+        else:
+            print("Invalid input. Please enter 'y' or 'n'.")
 
 def main(): 
     display_menu()
 
     #Creating an order object 
     customerOrder = Order()
-    customerOrder.add_item(burger = input("Please enter what burger you would like: "), quantity = input("Please enter quanity: "))
-    subtotal, tax, total = customerOrder.calc_total()
+    
+    burger = input("Please enter what burger you would like: ")
+    quantity = int(input("Please enter quanity: "))
+    customerOrder.add_item(burger=burger, quantity=quantity)
+
+    customer = get_customer_type()
+    subtotal, tax, total = customerOrder.calc_total(customer)
     customerOrder.print_bill(subtotal, tax, total)
 
     #Saving the bill in a file 
