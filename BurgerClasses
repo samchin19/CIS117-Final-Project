@@ -1,0 +1,12 @@
+# CIS117 - Final Part 1 - Maksym Stesev, Micole Chen, Samantha Chin
+# Team: SF Pythons
+
+from BaconCheeseBurger import BaconCheese
+from DeAnzaBurger import DeAnzaBurger
+from DonCaliBurger import DonCaliBurger
+from MushroomSwissBurger import MushroomSwiss
+from WesternBurger import WesternBurger
+
+BURGER_CLASSES = [DeAnzaBurger, BaconCheese, MushroomSwiss, WesternBurger, DonCaliBurger]
+
+
