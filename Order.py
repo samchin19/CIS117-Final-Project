@@ -29,7 +29,7 @@ class Order:
         print(f"Total price after tax: ${total:.2f}\n")
 
     def save_bill_to_file(self, subtotal, tax, total):
-        with open("bill.txt.", "w") as file:
+        with open("bill.txt", "w") as file:
             file.write("Your Bill:\n")
             file.write("*" * 50 + "\n")
             
