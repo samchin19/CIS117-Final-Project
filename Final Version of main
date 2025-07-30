@@ -1,0 +1,87 @@
+# CIS117 - Final Part 1 - Maksym Stesev, Micole Chen, Samantha Chin
+# Team: SF Pythons
+
+from Student import Student
+from Staff import Staff
+from Order import Order
+
+def display_menu(price_dict):
+    '''
+    Displays the menu options for the Food Court from the price dictionary.
+    '''
+    print("\n" + "*" * 10)
+    print("Welcome to the College Food Court!")
+    print("Please choose from the following:")
+
+    number_placeholder = 1
+    for key, value in price_dict.items():
+        print(f"{number_placeholder}. {key:<20} ${value:8.2f}")
+        number_placeholder += 1
+    print("*" * 10 + "\n")
+
+def get_customer_type():
+    '''
+    Prompts the user to select their customer type.
+    :return: Student or Staff object based on choice.
+    '''
+
+    while True:
+        try:
+            print("Please select your user type:")
+            print("1. Student")
+            print("2. Staff")
+            customer_choice = int(input("Enter choice (1-2): "))
+            if customer_choice == 1:
+                return Student()
+            elif customer_choice == 2:
+                return Staff()
+            else:
+                print("Invalid choice. Please enter 1 or 2.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+
+def main(): 
+    '''
+    Main function to run the system.
+    '''
+
+    loopFlag = True
+    while loopFlag:
+        customer_order = Order() # Create a new order for each run
+
+        customer = get_customer_type() # Obtain customer type
+
+        display_menu(customer_order.get_price_dict()) # Display menu using prices from Order object
+
+        loopFlagTwo = True
+        while loopFlagTwo:
+            try:
+                # Determine burger choice
+                burger_choice = int(input("Please enter the number of the burger you would like to order (or 6 to terminate): "))
+                # Terminate program if needed
+                if burger_choice == 6:
+                    break
+                # Determine quantity
+                quantity = input("Please enter quantity: ")
+                customer_order.add_item(burger_choice, quantity)
+            except ValueError:
+                print("Error")
+        if not customer_order.items:
+            print("No items were added to the order.")
+        else:
+            customer_order.calc_total(customer)
+            customer_order.print_bill()
+            customer_order.save_bill_to_file()
+            customer_order.showOrderGUI()
+        while True:
+            userInputToContinue = input("Continue for another order (Yes = y, No = n)? ").lower()
+            if userInputToContinue in ['y', 'n']:
+                break
+            else:
+                print("Invalid input. Please enter 'y' for Yes or 'n' for No.")
+        if userInputToContinue == 'n':
+            print("Thank you for ordering at our location!")
+            loopFlag = False
+
+if __name__ == '__main__':
+    main()
