@@ -6,5 +6,5 @@ class Student(Customer):
     '''
     Calculates the tax amount for a Student.
     '''
-    def calculate_tax(self):
+    def calculate_tax(self, subtotal):
         return 0.0 # set to zero by the requirements
