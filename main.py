@@ -6,11 +6,7 @@ from Customer import Customer
 from Staff import Staff
 from Student import Student
 from Burgers import Burger
-from BaconCheeseBurger import BaconCheese
-from DeAnzaBurger import DeAnzaBurger
-from DonCaliBurger import DonCaliBurger
-from MushroomSwissBurger import MushroomSwiss
-from WesternBurger import WesternBurger
+from BurgerClasses import BURGER_CLASSES
 import tkinter
 
 def display_menu():
@@ -20,11 +16,9 @@ def display_menu():
     print("*" * 10)
     print("Welcome to the College Food Court!")
     print("Please choose from the following:")
-    print("1. De Anza Burger - $5.25")
-    print("2. Bacon Cheese - $5.75")
-    print("3. Mushroom Swiss - $5.95")
-    print("4. Western Burger - $5.95")
-    print("5. Don Cali Burger - $5.95")
+   for idx, burger_cls in enumerate(BURGER_CLASSES, start=1):
+        burger = burger_cls()
+        print(f"{idx}. {burger.name} - ${burger.price:.2f}")
     print("6. Exit")
     print("*" * 10)
 
@@ -34,19 +28,38 @@ def get_customer_type():
         if isStudentString == 'y':
             return Student()
         elif isStudentString == 'n':
-            return RegularCustomer()
+            return Staff()
         else:
             print("Invalid input. Please enter 'y' or 'n'.")
 
 def main(): 
-    display_menu()
 
     #Creating an order object 
     customerOrder = Order()
-    
-    burger = input("Please enter what burger you would like: ")
-    quantity = int(input("Please enter quanity: "))
-    customerOrder.add_item(burger=burger, quantity=quantity)
+
+    while True: 
+        display_menu()
+        try: 
+            burger = int(input("Please enter what burger you would like: "))
+            if burger == 6:
+                break
+            if burger >= 1 and burger <= 5:
+                while True:
+                    try:
+                        quantity = int(input("Please enter quantity: "))
+                        if quantity > 0:
+                            burger_class = BURGER_CLASSES[burger - 1]
+                            burger = burger_class()
+                            customerOrder.add_item(burger, quantity)
+                            break
+                        else:
+                            print("Invalid quantity. Please enter a non-negative quantity.")
+                    except ValueError:
+                        print("Error, please enter a numeric input.")
+            else:
+                print("Invalid choice. Please select between 1-6.")
+        except ValueError:
+            print("Error, please enter a numeric input")
 
     customer = get_customer_type()
     subtotal, tax, total = customerOrder.calc_total(customer)
